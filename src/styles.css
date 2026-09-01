@@ -1776,13 +1776,13 @@ section.intro-section + section.featured-section {
 .site-footer {
   position: relative;
   overflow: hidden;
-  padding: clamp(72px, 10vw, 128px) clamp(20px, 4vw, 54px) 24px;
+  padding: clamp(42px, 5vw, 72px) clamp(20px, 4vw, 54px) 24px;
   background: var(--ink);
 }
 
 .footer-text-loop {
-  height: clamp(170px, 18vw, 230px);
-  margin-bottom: 38px;
+  height: clamp(130px, 13vw, 170px);
+  margin-bottom: 24px;
 }
 
 .footer-text-loop .text-loop-svg {
