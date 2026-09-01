@@ -1,0 +1,11 @@
+.split-parent {
+  display: inline-block;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.split-char,
+.split-word,
+.split-line {
+  display: inline-block;
+}

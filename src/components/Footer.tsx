@@ -2,6 +2,7 @@ import { FormEvent } from "react";
 import { Link } from "../lib/navigation";
 import { ArrowUpRight, Mail, MapPin } from "lucide-react";
 import { destinations, site } from "../lib/site-data";
+import SplitText from "./SplitText";
 import TextLoop from "./TextLoop";
 
 export function Footer() {
@@ -69,9 +70,20 @@ export function Footer() {
       </div>
 
       <div className="footer-wordmark">
-        <svg viewBox="0 0 1200 180" preserveAspectRatio="none" role="img" aria-label={site.name}>
-          <text x="0" y="145" textLength="1200" lengthAdjust="spacingAndGlyphs">{site.name}</text>
-        </svg>
+        <SplitText
+          className="footer-wordmark-text"
+          text={site.name}
+          tag="p"
+          splitType="chars"
+          delay={28}
+          duration={1.1}
+          ease="power3.out"
+          from={{ opacity: 0, y: 90, rotateX: -70 }}
+          to={{ opacity: 1, y: 0, rotateX: 0 }}
+          threshold={0.05}
+          rootMargin="-80px"
+          textAlign="left"
+        />
       </div>
       <div className="footer-bottom">
         <span>{site.coordinates}</span>

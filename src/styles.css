@@ -1879,17 +1879,23 @@ section.intro-section + section.featured-section {
   color: oklch(95% 0.025 86 / 0.12);
 }
 
-.footer-wordmark svg {
+.footer-wordmark-text {
+  display: block !important;
   width: 100%;
-  height: clamp(96px, 12.5vw, 240px);
-  overflow: visible;
+  margin: 0;
+  color: inherit;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 10vw, 12rem);
+  font-weight: 700;
+  line-height: 0.82;
+  letter-spacing: 0;
+  text-align: left !important;
+  white-space: nowrap;
 }
 
-.footer-wordmark text {
-  fill: currentColor;
-  font-family: var(--font-display);
-  font-size: 174px;
-  font-weight: 700;
+.footer-wordmark-text .split-char {
+  display: inline-block;
+  transform-origin: 50% 100%;
 }
 
 .footer-bottom {
@@ -2173,8 +2179,8 @@ section.intro-section + section.featured-section {
     margin-top: 48px;
   }
 
-  .footer-wordmark svg {
-    height: clamp(72px, 20vw, 110px);
+  .footer-wordmark-text {
+    font-size: clamp(2rem, 10vw, 4rem);
   }
 }
 
