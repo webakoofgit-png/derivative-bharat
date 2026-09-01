@@ -3,9 +3,20 @@ import { CalendarDays, Clock3, MapPin, MoveUpRight, Users } from "lucide-react";
 import { Link } from "../lib/navigation";
 import { Expedition, formatDate } from "../lib/site-data";
 
-export function ExpeditionCard({ expedition, index = 0 }: { expedition: Expedition; index?: number }) {
+export function ExpeditionCard({
+  expedition,
+  index = 0,
+  interactive = false,
+}: {
+  expedition: Expedition;
+  index?: number;
+  interactive?: boolean;
+}) {
   return (
-    <article className="expedition-card" style={{ "--delay": `${index * 80}ms` } as CSSProperties}>
+    <article
+      className={`expedition-card ${interactive ? "magic-bento-card magic-bento-card--border-glow" : ""}`.trim()}
+      style={{ "--delay": `${index * 80}ms` } as CSSProperties}
+    >
       <Link to="/expeditions/$slug" params={{ slug: expedition.slug }} data-cursor="VIEW">
         <figure>
           <img src={expedition.image} alt={expedition.title} loading="lazy" />

@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { Link } from "../lib/navigation";
 import { ExpeditionCard } from "../components/ExpeditionCard";
+import MagicBento from "../components/MagicBento";
 import { MaskedLines, Reveal } from "../components/Reveal";
 import { JsonLd, webPageSchema, useDocumentMeta } from "../lib/seo";
 import {
@@ -193,13 +194,25 @@ export function HomePage() {
             All expeditions <ArrowRight size={16} aria-hidden="true" />
           </Link>
         </div>
-        <div className="container expedition-grid">
+        <MagicBento
+          className="container expedition-grid"
+          textAutoHide={false}
+          enableStars
+          enableSpotlight
+          enableBorderGlow
+          enableTilt
+          enableMagnetism
+          clickEffect
+          spotlightRadius={280}
+          particleCount={10}
+          glowColor="214, 166, 67"
+        >
           {expeditions.slice(0, 3).map((expedition, index) => (
             <Reveal key={expedition.slug} delay={index * 0.08}>
-              <ExpeditionCard expedition={expedition} index={index} />
+              <ExpeditionCard expedition={expedition} index={index} interactive />
             </Reveal>
           ))}
-        </div>
+        </MagicBento>
       </section>
 
       <section className="section map-section">
