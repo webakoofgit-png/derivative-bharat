@@ -94,14 +94,6 @@
   mix-blend-mode: lighten;
 }
 
-.gooey-nav-container .effect.filter::before {
-  position: absolute;
-  z-index: -2;
-  inset: -75px;
-  background: var(--ink);
-  content: "";
-}
-
 .gooey-nav-container .effect.filter::after {
   position: absolute;
   z-index: -1;
