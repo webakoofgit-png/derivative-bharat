@@ -2,6 +2,7 @@ import { FormEvent } from "react";
 import { Link } from "../lib/navigation";
 import { ArrowUpRight, Mail, MapPin } from "lucide-react";
 import { destinations, site } from "../lib/site-data";
+import TextLoop from "./TextLoop";
 
 export function Footer() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -11,11 +12,22 @@ export function Footer() {
 
   return (
     <footer className="site-footer">
-      <div className="footer-route" aria-hidden="true">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M0 74 C160 10 296 128 430 58 C590 -26 704 142 850 54 C1000 -36 1086 46 1200 18" />
-        </svg>
-      </div>
+      <TextLoop
+        className="footer-text-loop"
+        text="DERIVATIVE BHARAT"
+        shape="wave"
+        speed={54}
+        direction="forward"
+        separator="*"
+        curviness={42}
+        fontSize={54}
+        fontWeight={800}
+        letterSpacing={3}
+        color="var(--gold)"
+        ribbon={false}
+        pauseOnHover
+        preserveAspectRatio="none"
+      />
 
       <div className="footer-grid">
         <div>

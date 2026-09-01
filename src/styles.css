@@ -1780,18 +1780,20 @@ section.intro-section + section.featured-section {
   background: var(--ink);
 }
 
-.footer-route svg {
-  width: 100%;
-  height: 90px;
-  margin-bottom: 46px;
+.footer-text-loop {
+  height: clamp(170px, 18vw, 230px);
+  margin-bottom: 38px;
 }
 
-.footer-route path {
-  fill: none;
+.footer-text-loop .text-loop-svg {
+  height: 100%;
+}
+
+.footer-text-loop .text-loop-svg > path {
   stroke: var(--gold);
   stroke-width: 2;
   stroke-dasharray: 8 11;
-  animation: route-dash 18s linear infinite;
+  opacity: 0.8;
 }
 
 .footer-grid {
