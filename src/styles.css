@@ -1888,30 +1888,6 @@ section.intro-section + section.featured-section {
   text-transform: uppercase;
 }
 
-.page-transition {
-  position: fixed;
-  inset: 0;
-  z-index: 260;
-  display: grid;
-  place-items: center;
-  pointer-events: none;
-  background: var(--ink);
-}
-
-.page-transition span {
-  color: var(--gold);
-  font-family: var(--font-display);
-  font-size: clamp(2.7rem, 9vw, 7rem);
-  line-height: 0.95;
-}
-
-.page-transition small {
-  color: oklch(94% 0.02 86 / 0.48);
-  font-size: 0.75rem;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
 @keyframes dust-drift {
   from {
     transform: translate3d(-2%, 1%, 0) scale(1);
@@ -2196,7 +2172,6 @@ section.intro-section + section.featured-section {
     transition-duration: 0.001ms !important;
   }
 
-  .page-transition,
   .custom-cursor {
     display: none !important;
   }

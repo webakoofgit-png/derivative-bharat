@@ -105,13 +105,6 @@ export function HomePage() {
 
       <section className="hero home-hero">
         <div className="hero-media">
-          <img
-            className="hero-fallback"
-            src={expeditions[0].image}
-            alt=""
-            fetchPriority="high"
-            decoding="sync"
-          />
           <video
             className={heroVideoReady ? "is-ready" : ""}
             autoPlay

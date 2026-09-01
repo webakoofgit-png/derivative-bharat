@@ -3,7 +3,6 @@ import { CustomCursor } from "../components/CustomCursor";
 import { Footer } from "../components/Footer";
 import { HeritageBackdrop } from "../components/HeritageBackdrop";
 import { Nav } from "../components/Nav";
-import { PageTransition } from "../components/PageTransition";
 import { SmoothScroll } from "../components/SmoothScroll";
 import { useLocation } from "../lib/navigation";
 import { JsonLd, organizationSchema } from "../lib/seo";
@@ -53,7 +52,6 @@ export function RootLayout({ children }: { children: ReactNode }) {
       <ScrollToTop />
       <HeritageBackdrop />
       <Nav />
-      <PageTransition />
       <main id="main-content">
         {children}
       </main>
