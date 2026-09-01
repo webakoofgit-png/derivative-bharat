@@ -724,7 +724,7 @@ section.intro-section + section.featured-section {
 
 .intro-figure--poster {
   height: auto;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 3 / 2;
 }
 
 .intro-figure::after {
