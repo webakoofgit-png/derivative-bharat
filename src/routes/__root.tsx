@@ -2,6 +2,7 @@ import { type ReactNode, useEffect } from "react";
 import { CustomCursor } from "../components/CustomCursor";
 import { Footer } from "../components/Footer";
 import { HeritageBackdrop } from "../components/HeritageBackdrop";
+import MoltenMetal from "../components/MoltenMetal";
 import { Nav } from "../components/Nav";
 import { SmoothScroll } from "../components/SmoothScroll";
 import { useLocation } from "../lib/navigation";
@@ -50,6 +51,7 @@ export function RootLayout({ children }: { children: ReactNode }) {
     <>
       <SmoothScroll />
       <ScrollToTop />
+      <MoltenMetal />
       <HeritageBackdrop />
       <Nav />
       <main id="main-content">
