@@ -8,7 +8,7 @@ import {
   Route as RouteIcon,
   Sparkles,
 } from "lucide-react";
-import { Link } from "@tanstack/react-router";
+import { Link } from "../lib/navigation";
 import { ExpeditionCard } from "../components/ExpeditionCard";
 import { MaskedLines, Reveal } from "../components/Reveal";
 import { JsonLd, webPageSchema, useDocumentMeta } from "../lib/seo";

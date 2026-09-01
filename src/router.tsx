@@ -1,5 +1,6 @@
-import { createRoute, createRouter } from "@tanstack/react-router";
-import { Route as rootRoute } from "./routes/__root";
+import { type ComponentType, useCallback, useEffect, useMemo, useState } from "react";
+import { NavigationProvider, getBrowserLocation, type AppLocation, type RouteParams } from "./lib/navigation";
+import { RootLayout } from "./routes/__root";
 import { AboutPage } from "./routes/about";
 import { ContactPage } from "./routes/contact";
 import { DeparturesPage } from "./routes/departures";
@@ -12,87 +13,118 @@ import { HomePage } from "./routes/index";
 import { JournalPage } from "./routes/journal";
 import { NotFoundPage } from "./routes/not-found";
 
-const indexRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: "/",
-  component: HomePage,
-});
+type RouteMatch = {
+  component: ComponentType;
+  params: RouteParams;
+};
 
-const expeditionsRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: "/expeditions",
-  component: ExpeditionsPage,
-});
+type RouteConfig = {
+  path: string;
+  component: ComponentType;
+};
 
-const expeditionDetailRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: "/expeditions/$slug",
-  component: ExpeditionDetailPage,
-});
+const routes: RouteConfig[] = [
+  { path: "/", component: HomePage },
+  { path: "/expeditions", component: ExpeditionsPage },
+  { path: "/expeditions/:slug", component: ExpeditionDetailPage },
+  { path: "/destinations", component: DestinationsPage },
+  { path: "/destinations/:slug", component: DestinationDetailPage },
+  { path: "/heritage-walks", component: HeritageWalksPage },
+  { path: "/departures", component: DeparturesPage },
+  { path: "/journal", component: JournalPage },
+  { path: "/about", component: AboutPage },
+  { path: "/contact", component: ContactPage },
+];
 
-const destinationsRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: "/destinations",
-  component: DestinationsPage,
-});
+export function AppRouter() {
+  const [location, setLocation] = useState<AppLocation>(() => getBrowserLocation());
+  const match = useMemo(() => matchRoute(location.pathname), [location.pathname]);
 
-const destinationDetailRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: "/destinations/$slug",
-  component: DestinationDetailPage,
-});
+  const navigate = useCallback((to: string) => {
+    const url = new URL(to, window.location.origin);
+    const nextPath = `${url.pathname}${url.search}${url.hash}`;
+    const currentPath = `${window.location.pathname}${window.location.search}${window.location.hash}`;
 
-const heritageWalksRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: "/heritage-walks",
-  component: HeritageWalksPage,
-});
+    if (nextPath !== currentPath) {
+      window.history.pushState(null, "", nextPath);
+    }
 
-const departuresRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: "/departures",
-  component: DeparturesPage,
-});
+    setLocation(getBrowserLocation());
+  }, []);
 
-const journalRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: "/journal",
-  component: JournalPage,
-});
+  useEffect(() => {
+    const handlePopState = () => setLocation(getBrowserLocation());
 
-const aboutRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: "/about",
-  component: AboutPage,
-});
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
 
-const contactRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: "/contact",
-  component: ContactPage,
-});
+  const navigationValue = useMemo(
+    () => ({
+      ...location,
+      params: match.params,
+      navigate,
+    }),
+    [location, match.params, navigate]
+  );
 
-const routeTree = rootRoute.addChildren([
-  indexRoute,
-  expeditionsRoute,
-  expeditionDetailRoute,
-  destinationsRoute,
-  destinationDetailRoute,
-  heritageWalksRoute,
-  departuresRoute,
-  journalRoute,
-  aboutRoute,
-  contactRoute,
-]);
+  const Page = match.component;
 
-export const router = createRouter({
-  routeTree,
-  defaultPreload: "intent",
-  defaultNotFoundComponent: NotFoundPage,
-});
+  return (
+    <NavigationProvider value={navigationValue}>
+      <RootLayout>
+        <Page />
+      </RootLayout>
+    </NavigationProvider>
+  );
+}
 
-declare module "@tanstack/react-router" {
-  interface Register {
-    router: typeof router;
+function matchRoute(pathname: string): RouteMatch {
+  for (const route of routes) {
+    const params = matchPath(route.path, pathname);
+
+    if (params) {
+      return {
+        component: route.component,
+        params,
+      };
+    }
   }
+
+  return {
+    component: NotFoundPage,
+    params: {},
+  };
+}
+
+function matchPath(pattern: string, pathname: string) {
+  const patternSegments = splitPath(pattern);
+  const pathSegments = splitPath(pathname);
+
+  if (patternSegments.length !== pathSegments.length) {
+    return null;
+  }
+
+  return patternSegments.reduce<RouteParams | null>((params, segment, index) => {
+    if (!params) {
+      return null;
+    }
+
+    const pathSegment = pathSegments[index];
+
+    if (segment.startsWith(":") && pathSegment) {
+      return {
+        ...params,
+        [segment.slice(1)]: decodeURIComponent(pathSegment),
+      };
+    }
+
+    return segment === pathSegment ? params : null;
+  }, {});
+}
+
+function splitPath(path: string) {
+  const pathname = path.split(/[?#]/)[0] || "/";
+  const normalized = pathname.length > 1 ? pathname.replace(/\/+$/, "") : pathname;
+  return normalized.split("/").filter(Boolean);
 }

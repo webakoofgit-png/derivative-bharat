@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import { CalendarDays, Clock3, MapPin, MoveUpRight, Users } from "lucide-react";
-import { Link } from "@tanstack/react-router";
+import { Link } from "../lib/navigation";
 import { Expedition, formatDate } from "../lib/site-data";
 
 export function ExpeditionCard({ expedition, index = 0 }: { expedition: Expedition; index?: number }) {

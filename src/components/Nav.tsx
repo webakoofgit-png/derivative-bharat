@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import { FormEvent, useEffect, useMemo, useState } from "react";
-import { Link, useLocation } from "@tanstack/react-router";
+import { Link, useLocation, useNavigate } from "../lib/navigation";
 import { Menu, Search, X } from "lucide-react";
 import { destinations, expeditions, journalArticles } from "../lib/site-data";
 
@@ -21,6 +21,7 @@ type SearchResult = {
 
 export function Nav() {
   const pathname = useLocation({ select: (location) => location.pathname });
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -77,8 +78,7 @@ export function Nav() {
     event.preventDefault();
     const firstResult = searchResults[0];
     if (firstResult) {
-      window.history.pushState(null, "", firstResult.href);
-      window.dispatchEvent(new PopStateEvent("popstate"));
+      navigate(firstResult.href);
       setSearchOpen(false);
     }
   };
@@ -175,13 +175,13 @@ export function Nav() {
           </div>
           <div className="search-results">
             {searchResults.map((item) => (
-              <a key={`${item.href}-${item.label}`} href={item.href} data-cursor="VIEW">
+              <Link key={`${item.href}-${item.label}`} to={item.href} data-cursor="VIEW">
                 <img src={item.image} alt="" loading="lazy" />
                 <span>
                   <small>{item.eyebrow}</small>
                   <strong>{item.label}</strong>
                 </span>
-              </a>
+              </Link>
             ))}
           </div>
         </form>

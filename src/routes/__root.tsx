@@ -1,11 +1,11 @@
-import { useEffect } from "react";
-import { createRootRoute, Outlet, useLocation } from "@tanstack/react-router";
+import { type ReactNode, useEffect } from "react";
 import { CustomCursor } from "../components/CustomCursor";
 import { Footer } from "../components/Footer";
 import { HeritageBackdrop } from "../components/HeritageBackdrop";
 import { Nav } from "../components/Nav";
 import { PageTransition } from "../components/PageTransition";
 import { SmoothScroll } from "../components/SmoothScroll";
+import { useLocation } from "../lib/navigation";
 import { JsonLd, organizationSchema } from "../lib/seo";
 
 function useGoogleFonts() {
@@ -44,7 +44,7 @@ function ScrollToTop() {
   return null;
 }
 
-function RootComponent() {
+export function RootLayout({ children }: { children: ReactNode }) {
   useGoogleFonts();
 
   return (
@@ -55,7 +55,7 @@ function RootComponent() {
       <Nav />
       <PageTransition />
       <main id="main-content">
-        <Outlet />
+        {children}
       </main>
       <Footer />
       <CustomCursor />
@@ -63,7 +63,3 @@ function RootComponent() {
     </>
   );
 }
-
-export const Route = createRootRoute({
-  component: RootComponent,
-});

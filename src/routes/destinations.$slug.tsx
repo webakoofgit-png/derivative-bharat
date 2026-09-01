@@ -1,4 +1,4 @@
-import { Link, useParams } from "@tanstack/react-router";
+import { Link, useParams } from "../lib/navigation";
 import { ArrowRight, MapPin } from "lucide-react";
 import { ExpeditionCard } from "../components/ExpeditionCard";
 import { Reveal } from "../components/Reveal";

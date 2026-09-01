@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "../lib/navigation";
 import { ArrowLeft } from "lucide-react";
 import { JsonLd, useDocumentMeta, webPageSchema } from "../lib/seo";
 

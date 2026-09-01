@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "motion/react";
-import { useLocation } from "@tanstack/react-router";
+import { useLocation } from "../lib/navigation";
 import { destinations, expeditions } from "../lib/site-data";
 
 function getPlaceLabel(pathname: string) {

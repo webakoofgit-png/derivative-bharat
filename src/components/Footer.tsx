@@ -1,5 +1,5 @@
 import { FormEvent } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link } from "../lib/navigation";
 import { ArrowUpRight, Mail, MapPin } from "lucide-react";
 import { destinations, site } from "../lib/site-data";
 
