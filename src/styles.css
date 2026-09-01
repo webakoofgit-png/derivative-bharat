@@ -264,6 +264,26 @@ ul {
   filter: drop-shadow(0 0 16px oklch(65% 0.13 45 / 0.34));
 }
 
+.scroll-plane {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  color: var(--gold);
+  filter: drop-shadow(0 0 8px oklch(76% 0.12 83 / 0.55));
+  opacity: 0.88;
+  pointer-events: none;
+  will-change: left, top, transform;
+}
+
+.scroll-plane-icon {
+  display: grid;
+  place-items: center;
+  transform: translate(-50%, -50%);
+}
+
 .sunlit-dust {
   position: absolute;
   inset: 0;
@@ -2204,6 +2224,10 @@ section.intro-section + section.featured-section {
   }
 
   .gallery-strip [aria-hidden="true"] {
+    display: none;
+  }
+
+  .scroll-plane {
     display: none;
   }
 }
