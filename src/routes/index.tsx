@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   ArrowRight,
   BookOpenText,
@@ -89,6 +90,8 @@ const galleryTours = [
 ];
 
 export function HomePage() {
+  const [heroVideoReady, setHeroVideoReady] = useState(false);
+
   useDocumentMeta({
     title: "Derivative Bharat",
     description: homeDescription,
@@ -102,7 +105,22 @@ export function HomePage() {
 
       <section className="hero home-hero">
         <div className="hero-media">
-          <video autoPlay muted loop playsInline poster={expeditions[0].image} aria-label="Cinematic heritage travel background">
+          <img
+            className="hero-fallback"
+            src={expeditions[0].image}
+            alt=""
+            fetchPriority="high"
+            decoding="sync"
+          />
+          <video
+            className={heroVideoReady ? "is-ready" : ""}
+            autoPlay
+            muted
+            loop
+            playsInline
+            onCanPlay={() => setHeroVideoReady(true)}
+            aria-label="Cinematic heritage travel background"
+          >
             <source src={heritageBackgroundVideo} type="video/mp4" />
           </video>
         </div>
@@ -111,7 +129,7 @@ export function HomePage() {
           <Reveal>
             <p className="micro-label">Cinematic heritage expeditions / India</p>
           </Reveal>
-          <MaskedLines as="h1" lines={["Derivative", "Bharat"]} />
+          <MaskedLines as="h1" lines={["Derivative", "Bharat"]} immediate />
           <Reveal delay={0.2}>
             <p className="hero-copy">
               We design slow, story-rich journeys across forts, temple towns, rainforests, markets, and river

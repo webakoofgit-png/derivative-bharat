@@ -27,9 +27,10 @@ type MaskedLinesProps = {
   lines: string[];
   as?: "h1" | "h2" | "p";
   className?: string;
+  immediate?: boolean;
 };
 
-export function MaskedLines({ lines, as: Tag = "h2", className = "" }: MaskedLinesProps) {
+export function MaskedLines({ lines, as: Tag = "h2", className = "", immediate = false }: MaskedLinesProps) {
   const reducedMotion = useReducedMotion();
 
   return (
@@ -37,10 +38,11 @@ export function MaskedLines({ lines, as: Tag = "h2", className = "" }: MaskedLin
       {lines.map((line, index) => (
         <span className="masked-line" key={line}>
           <motion.span
-            initial={reducedMotion ? false : { y: "115%" }}
-            whileInView={reducedMotion ? undefined : { y: "0%" }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1], delay: index * 0.08 }}
+            initial={immediate || reducedMotion ? false : { y: "115%" }}
+            animate={immediate ? { y: "0%" } : undefined}
+            whileInView={immediate || reducedMotion ? undefined : { y: "0%" }}
+            viewport={immediate || reducedMotion ? undefined : { once: true, margin: "-80px" }}
+            transition={immediate ? { duration: 0 } : { duration: 0.95, ease: [0.22, 1, 0.36, 1], delay: index * 0.08 }}
           >
             {line}
           </motion.span>
