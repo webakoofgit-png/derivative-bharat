@@ -162,9 +162,9 @@ void main() {
 const contexts = new WeakMap<HTMLDivElement, MoltenContext>();
 
 export default function MoltenMetal({
-  color1 = "#24180f",
-  color2 = "#8b4a20",
-  color3 = "#e7b94f",
+  color1 = "#5c3a1c",
+  color2 = "#bd6a2f",
+  color3 = "#f0c95e",
   speed = 0.16,
   scale = 3.4,
   detail = 3,
@@ -173,13 +173,13 @@ export default function MoltenMetal({
   swirl = 1.15,
   fold = -0.2,
   blackPoint = 0.12,
-  brightness = 0.62,
+  brightness = 0.9,
   colorMode = "molten",
   grain = true,
   grainIntensity = 0.025,
   mouseInteraction = true,
   mouseStrength = 0.16,
-  opacity = 0.35,
+  opacity = 0.62,
   backgroundColor = "#19150e",
   lightMode = false,
   className = "",

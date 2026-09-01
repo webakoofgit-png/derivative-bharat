@@ -51,8 +51,10 @@ export function RootLayout({ children }: { children: ReactNode }) {
     <>
       <SmoothScroll />
       <ScrollToTop />
-      <MoltenMetal />
-      <HeritageBackdrop />
+      <div className="site-background" aria-hidden="true">
+        <MoltenMetal />
+        <HeritageBackdrop />
+      </div>
       <Nav />
       <main id="main-content">
         {children}

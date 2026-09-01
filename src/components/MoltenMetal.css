@@ -8,6 +8,11 @@
   pointer-events: none;
 }
 
+.site-background .molten-metal-container {
+  position: absolute;
+  z-index: 0;
+}
+
 .molten-metal-canvas {
   display: block;
   width: 100%;
