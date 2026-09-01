@@ -121,9 +121,6 @@ export function HomePage() {
         </div>
         <div className="hero-scrim" />
         <div className="container hero-content">
-          <Reveal>
-            <p className="micro-label">Cinematic heritage expeditions / India</p>
-          </Reveal>
           <MaskedLines as="h1" lines={["Derivative", "Bharat"]} immediate />
           <Reveal delay={0.2}>
             <p className="hero-copy">
