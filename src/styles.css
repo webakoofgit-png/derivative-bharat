@@ -22,7 +22,7 @@
 }
 
 html {
-  min-width: 320px;
+  min-width: 0;
   background: var(--charcoal);
   scroll-behavior: auto;
 }
@@ -784,6 +784,20 @@ section.intro-section + section.featured-section {
   grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
   gap: clamp(34px, 7vw, 92px);
   align-items: start;
+}
+
+.split-grid > *,
+.expedition-grid > *,
+.detail-grid > *,
+.destination-grid > *,
+.journal-grid > *,
+.contact-grid > *,
+.footer-grid > *,
+.story-grid > *,
+.icon-grid > *,
+.walk-grid > *,
+.included-grid > * {
+  min-width: 0;
 }
 
 .number-row {
@@ -1983,6 +1997,10 @@ section.intro-section + section.featured-section {
 }
 
 @media (max-width: 1080px) {
+  .site-nav {
+    padding-inline: clamp(18px, 3vw, 32px);
+  }
+
   .site-gooey-nav {
     display: none;
   }
@@ -2021,8 +2039,35 @@ section.intro-section + section.featured-section {
     grid-template-columns: 1fr 1fr;
   }
 
+  .departure-row > * {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
   .departure-row svg:last-child {
     display: none;
+  }
+
+  .page-hero {
+    min-height: 56vh;
+    padding: 132px 0 64px;
+  }
+
+  .detail-hero {
+    min-height: 72vh;
+    padding: 142px 0 64px;
+  }
+
+  .detail-hero--destination {
+    min-height: 64vh;
+  }
+
+  .expedition-card figure {
+    height: clamp(240px, 34vw, 360px);
+  }
+
+  .itinerary-list article {
+    grid-template-columns: 120px 1fr;
   }
 }
 
@@ -2033,6 +2078,29 @@ section.intro-section + section.featured-section {
 
   body {
     font-size: 15px;
+  }
+
+  .page-hero,
+  .detail-hero {
+    min-height: auto;
+    padding: 112px 0 56px;
+  }
+
+  .detail-hero--destination {
+    min-height: auto;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(2.7rem, 8vw, 4.2rem);
+  }
+
+  .detail-hero h1 {
+    font-size: clamp(2.9rem, 9vw, 5.2rem);
+  }
+
+  .page-hero p:not(.micro-label),
+  .detail-hero p:not(.micro-label) {
+    font-size: 1rem;
   }
 
   .site-nav {
@@ -2085,7 +2153,7 @@ section.intro-section + section.featured-section {
   }
 
   h1 {
-    font-size: clamp(4rem, 23vw, 6.7rem);
+    font-size: clamp(3rem, 18vw, 6rem);
   }
 
   h2 {
@@ -2147,6 +2215,113 @@ section.intro-section + section.featured-section {
     grid-template-columns: 1fr;
   }
 
+  .detail-stats {
+    gap: 8px;
+    margin-top: 22px;
+  }
+
+  .detail-stats span {
+    overflow-wrap: anywhere;
+  }
+
+  .expedition-card figure {
+    height: clamp(220px, 65vw, 340px);
+  }
+
+  .expedition-card__body {
+    gap: 14px;
+    padding: 18px;
+  }
+
+  .expedition-card h3,
+  .expedition-card p {
+    min-height: 0;
+  }
+
+  .expedition-grid--wide {
+    margin-top: 20px;
+  }
+
+  .story-tile,
+  .icon-grid article,
+  .walk-tile {
+    min-height: 0;
+    padding: 20px;
+  }
+
+  .destination-card {
+    min-height: 360px;
+    padding: 18px;
+  }
+
+  .journal-card img {
+    height: clamp(180px, 55vw, 260px);
+  }
+
+  .quote-grid figure {
+    min-height: 0;
+    padding: 20px;
+  }
+
+  .itinerary-list article {
+    gap: 14px;
+    padding: 18px;
+  }
+
+  .included-grid > div,
+  .contact-card,
+  .contact-form {
+    padding: 18px;
+  }
+
+  .departure-row {
+    gap: 8px;
+    padding: 14px;
+  }
+
+  .departure-row strong {
+    font-size: 1rem;
+  }
+
+  .departure-date {
+    flex-wrap: wrap;
+  }
+
+  .filter-panel {
+    padding: 14px;
+  }
+
+  .segmented-control button {
+    flex: 1 1 auto;
+  }
+
+  .search-overlay {
+    padding: 18px;
+  }
+
+  .search-panel {
+    width: 100%;
+  }
+
+  .overlay-close {
+    top: 16px;
+    right: 16px;
+  }
+
+  .footer-bottom span,
+  .contact-card a,
+  .contact-card span {
+    overflow-wrap: anywhere;
+  }
+
+  .footer-grid {
+    gap: 22px;
+  }
+
+  .footer-wordmark {
+    overflow: hidden;
+  }
+
   .number-row {
     grid-template-columns: 1fr;
   }
@@ -2201,6 +2376,67 @@ section.intro-section + section.featured-section {
 
   .footer-wordmark-text {
     font-size: clamp(2rem, 10vw, 4rem);
+  }
+}
+
+@media (max-width: 420px) {
+  :root {
+    --container: calc(100vw - 24px);
+  }
+
+  .site-nav {
+    gap: 6px;
+    padding: 10px 12px;
+  }
+
+  .nav-actions {
+    gap: 4px;
+  }
+
+  .nav-actions .icon-button {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+  }
+
+  .brand-mark {
+    gap: 7px;
+  }
+
+  .brand-mark__seal {
+    flex-basis: 34px;
+    width: 34px;
+  }
+
+  .brand-mark strong {
+    font-size: 1rem;
+  }
+
+  .hero,
+  .page-hero,
+  .detail-hero {
+    padding-top: 96px;
+  }
+
+  .hero-copy {
+    font-size: 1rem;
+  }
+
+  .button {
+    padding-inline: 14px;
+  }
+
+  .page-hero h1,
+  .detail-hero h1 {
+    font-size: 2.7rem;
+  }
+
+  .section {
+    padding-block: 38px;
+  }
+
+  .footer-wordmark-text {
+    font-size: 2rem;
   }
 }
 
