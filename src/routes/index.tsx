@@ -138,11 +138,6 @@ export function HomePage() {
             </Link>
           </Reveal>
         </div>
-        <div className="hero-index">
-          <span>15.3350 N</span>
-          <span>Vijayanagara field route</span>
-          <span>76.4600 E</span>
-        </div>
       </section>
 
       <section className="section intro-section">
