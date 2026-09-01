@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import { CalendarDays, Clock3, MapPin, MoveUpRight, Users } from "lucide-react";
 import { Link } from "../lib/navigation";
 import { Expedition, formatDate } from "../lib/site-data";
+import BorderGlow from "./BorderGlow";
 
 export function ExpeditionCard({
   expedition,
@@ -12,7 +13,7 @@ export function ExpeditionCard({
   index?: number;
   interactive?: boolean;
 }) {
-  return (
+  const card = (
     <article
       className={`expedition-card ${interactive ? "magic-bento-card magic-bento-card--border-glow" : ""}`.trim()}
       style={{ "--delay": `${index * 80}ms` } as CSSProperties}
@@ -50,5 +51,22 @@ export function ExpeditionCard({
         </div>
       </Link>
     </article>
+  );
+
+  return (
+    <BorderGlow
+      className="expedition-card-glow"
+      edgeSensitivity={28}
+      glowColor="42 76 63"
+      backgroundColor="#201b13"
+      borderRadius={8}
+      glowRadius={24}
+      glowIntensity={0.85}
+      coneSpread={25}
+      colors={["#e7b94f", "#b86c2e", "#64856d"]}
+      fillOpacity={0.22}
+    >
+      {card}
+    </BorderGlow>
   );
 }

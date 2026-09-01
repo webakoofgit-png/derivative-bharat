@@ -807,6 +807,19 @@ section.intro-section + section.featured-section {
   animation-delay: var(--delay, 0ms);
 }
 
+.expedition-card-glow {
+  height: 100%;
+  min-width: 0;
+}
+
+.expedition-card-glow .expedition-card {
+  min-width: 0;
+}
+
+.expedition-card-glow .expedition-card a {
+  border-color: transparent;
+}
+
 .expedition-card a {
   display: grid;
   height: 100%;
