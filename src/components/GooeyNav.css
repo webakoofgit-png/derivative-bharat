@@ -1,0 +1,204 @@
+.gooey-nav-container {
+  --linear-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+.gooey-nav-container nav {
+  position: relative;
+  display: flex;
+  transform: translate3d(0, 0, 0.01px);
+}
+
+.gooey-nav-container nav ul {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  gap: clamp(12px, 1.8vw, 28px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--ivory);
+  text-shadow: 0 1px 1px oklch(5% 0.02 50 / 0.25);
+}
+
+.gooey-nav-container nav li {
+  position: relative;
+  border-radius: 100vw;
+  color: oklch(94% 0.02 86 / 0.78);
+  cursor: pointer;
+  transition: color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gooey-nav-container nav li a {
+  display: inline-block;
+  padding: 0.55em 0.8em;
+  color: inherit;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.gooey-nav-container nav li:focus-within:has(:focus-visible) {
+  box-shadow: 0 0 0.5px 1.5px var(--gold);
+}
+
+.gooey-nav-container nav li::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: 100vw;
+  background: var(--ivory);
+  content: "";
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.3s ease;
+}
+
+.gooey-nav-container nav li.active {
+  color: var(--ink);
+  text-shadow: none;
+}
+
+.gooey-nav-container nav li.active::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.gooey-nav-container .effect {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  display: grid;
+  width: 0;
+  height: 0;
+  place-items: center;
+  pointer-events: none;
+  opacity: 1;
+}
+
+.gooey-nav-container .effect.text {
+  color: var(--ivory);
+  transition: color 0.3s ease;
+}
+
+.gooey-nav-container .effect.text.active {
+  color: var(--ink);
+}
+
+.gooey-nav-container .effect.filter {
+  filter: blur(7px) contrast(100) blur(0);
+  mix-blend-mode: lighten;
+}
+
+.gooey-nav-container .effect.filter::before {
+  position: absolute;
+  z-index: -2;
+  inset: -75px;
+  background: var(--ink);
+  content: "";
+}
+
+.gooey-nav-container .effect.filter::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: 100vw;
+  background: var(--ivory);
+  content: "";
+  opacity: 0;
+  transform: scale(0);
+}
+
+.gooey-nav-container .effect.active::after {
+  animation: gooey-pill 0.3s ease both;
+}
+
+@keyframes gooey-pill {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.gooey-nav-container .particle,
+.gooey-nav-container .point {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  opacity: 0;
+  transform-origin: center;
+}
+
+.gooey-nav-container .particle {
+  position: absolute;
+  top: calc(50% - 8px);
+  left: calc(50% - 8px);
+  animation: gooey-particle calc(var(--time)) ease 1 -350ms;
+}
+
+.gooey-nav-container .point {
+  background: var(--color);
+  opacity: 1;
+  animation: gooey-point calc(var(--time)) ease 1 -350ms;
+}
+
+@keyframes gooey-particle {
+  0% {
+    opacity: 1;
+    transform: rotate(0deg) translate(var(--start-x), var(--start-y));
+    animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45);
+  }
+
+  70% {
+    opacity: 1;
+    transform: rotate(calc(var(--rotate) * 0.5)) translate(calc(var(--end-x) * 1.2), calc(var(--end-y) * 1.2));
+    animation-timing-function: ease;
+  }
+
+  85% {
+    opacity: 1;
+    transform: rotate(calc(var(--rotate) * 0.66)) translate(var(--end-x), var(--end-y));
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotate(calc(var(--rotate) * 1.2)) translate(calc(var(--end-x) * 0.5), calc(var(--end-y) * 0.5));
+  }
+}
+
+@keyframes gooey-point {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+    animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45);
+  }
+
+  25% {
+    transform: scale(calc(var(--scale) * 0.25));
+  }
+
+  38% {
+    opacity: 1;
+  }
+
+  65% {
+    opacity: 1;
+    transform: scale(var(--scale));
+    animation-timing-function: ease;
+  }
+
+  85% {
+    opacity: 1;
+    transform: scale(var(--scale));
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}

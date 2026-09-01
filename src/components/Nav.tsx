@@ -3,6 +3,7 @@ import { FormEvent, useEffect, useMemo, useState } from "react";
 import { Link, useLocation, useNavigate } from "../lib/navigation";
 import { Menu, Search, X } from "lucide-react";
 import { destinations, expeditions, journalArticles } from "../lib/site-data";
+import GooeyNav from "./GooeyNav";
 
 const navItems = [
   { label: "Expeditions", to: "/expeditions" },
@@ -94,13 +95,18 @@ export function Nav() {
           </span>
         </Link>
 
-        <nav className="nav-links" aria-label="Primary navigation">
-          {navItems.map((item) => (
-            <Link key={item.to} to={item.to} activeProps={{ className: "is-active" }} data-cursor="EXPLORE">
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <GooeyNav
+          className="site-gooey-nav"
+          items={navItems.map((item) => ({ label: item.label, href: item.to }))}
+          activeIndex={navItems.findIndex((item) => pathname === item.to || pathname.startsWith(`${item.to}/`))}
+          onNavigate={navigate}
+          particleCount={12}
+          particleDistances={[76, 12]}
+          particleR={86}
+          animationTime={560}
+          timeVariance={240}
+          colors={[1, 2, 3, 1, 4]}
+        />
 
         <div className="nav-actions">
           <button
