@@ -1,0 +1,8 @@
+node_modules
+dist
+.npm-cache
+.vite
+.edge-debug2
+mobile-check.png
+*.local
+*.tsbuildinfo
