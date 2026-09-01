@@ -152,7 +152,25 @@ export default function GooeyNav({
   };
 
   useEffect(() => {
+    const resetEffect = () => {
+      const filter = filterRef.current;
+      const text = textRef.current;
+
+      filter?.classList.remove("active");
+      filter?.querySelectorAll(".particle").forEach((particle) => particle.remove());
+      text?.classList.remove("active");
+
+      if (filter) {
+        Object.assign(filter.style, { left: "0px", top: "0px", width: "0px", height: "0px" });
+      }
+      if (text) {
+        Object.assign(text.style, { left: "0px", top: "0px", width: "0px", height: "0px" });
+        text.innerText = "";
+      }
+    };
+
     if (!navRef.current || !containerRef.current || selectedIndex < 0) {
+      resetEffect();
       return undefined;
     }
 
