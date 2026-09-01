@@ -25,6 +25,7 @@ import {
   travellerQuotes,
 } from "../lib/site-data";
 import heritageBackgroundVideo from "../assets/heritage-background.mp4";
+import toursTravelsPoster from "../assets/tours-travels-poster.png";
 
 const homeDescription =
   "Derivative Bharat designs cinematic small-group heritage expeditions across India with historians, naturalists, and local storytellers.";
@@ -150,14 +151,13 @@ export function HomePage() {
         <div className="container split-grid">
           <Reveal className="intro-visual">
             <p className="micro-label">The premise</p>
-            <figure className="intro-figure" data-cursor="VIEW">
+            <figure className="intro-figure intro-figure--poster" data-cursor="VIEW">
               <img
-                src={expeditions[0].gallery[1]}
-                alt="Carved temple tower at Hampi"
+                src={toursTravelsPoster}
+                alt="Tours and travels poster showing a heritage fort landscape"
                 loading="lazy"
                 decoding="async"
               />
-              <figcaption>15.3350 N / Hampi field route</figcaption>
             </figure>
           </Reveal>
           <Reveal delay={0.1}>

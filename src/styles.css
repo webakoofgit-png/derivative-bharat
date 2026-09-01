@@ -722,6 +722,11 @@ section.intro-section + section.featured-section {
   box-shadow: var(--shadow);
 }
 
+.intro-figure--poster {
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
 .intro-figure::after {
   position: absolute;
   inset: 0;
@@ -729,6 +734,10 @@ section.intro-section + section.featured-section {
   background:
     linear-gradient(0deg, oklch(8% 0.014 50 / 0.74), transparent 48%),
     linear-gradient(90deg, oklch(55% 0.12 43 / 0.18), transparent 54%);
+}
+
+.intro-figure--poster::after {
+  display: none;
 }
 
 .intro-figure video,
@@ -744,6 +753,11 @@ section.intro-section + section.featured-section {
 .intro-figure:hover video,
 .intro-figure:hover img {
   transform: scale(1.055);
+}
+
+.intro-figure--poster img {
+  object-fit: contain;
+  background: var(--ink);
 }
 
 .intro-figure figcaption {
