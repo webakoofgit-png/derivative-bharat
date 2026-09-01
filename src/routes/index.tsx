@@ -151,9 +151,12 @@ export function HomePage() {
           <Reveal className="intro-visual">
             <p className="micro-label">The premise</p>
             <figure className="intro-figure" data-cursor="VIEW">
-              <video autoPlay muted loop playsInline poster={expeditions[0].image} aria-label="Cinematic heritage travel video">
-                <source src={heritageBackgroundVideo} type="video/mp4" />
-              </video>
+              <img
+                src={expeditions[0].gallery[1]}
+                alt="Carved temple tower at Hampi"
+                loading="lazy"
+                decoding="async"
+              />
               <figcaption>15.3350 N / Hampi field route</figcaption>
             </figure>
           </Reveal>
