@@ -30,7 +30,7 @@ import {
   storyCategories,
   travellerQuotes,
 } from "../lib/site-data";
-import homeHeroVideo from "../assets/heritage-background.mp4";
+import homeHeroVideo from "../../From Klickpin.com- Use these 20 Dreamy side hustle ideas that instantly upgrade your space style or celebration without much effort for beginners.mp4";
 
 const homeDescription =
   "Derivative Bharat designs premium small-group heritage expeditions and private culture walks across India with historians, naturalists, and local storytellers.";
