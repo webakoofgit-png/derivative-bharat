@@ -206,10 +206,10 @@ export default function GooeyNav({
       ref={containerRef}
       className={`gooey-nav-container ${className}`.trim()}
       style={{
-        "--color-1": "var(--gold)",
-        "--color-2": "var(--terracotta)",
-        "--color-3": "var(--forest)",
-        "--color-4": "var(--ivory)",
+        "--color-1": "var(--forest)",
+        "--color-2": "oklch(50% 0.052 151)",
+        "--color-3": "oklch(72% 0.036 154)",
+        "--color-4": "oklch(92% 0.024 88)",
       } as React.CSSProperties}
     >
       <nav ref={navRef} aria-label="Primary navigation">

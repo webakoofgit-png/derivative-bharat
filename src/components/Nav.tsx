@@ -106,7 +106,7 @@ export function Nav() {
           particleR={86}
           animationTime={560}
           timeVariance={240}
-          colors={[1, 2, 3, 1, 4]}
+          colors={[1, 2, 3, 1, 2, 4]}
         />
 
         <div className="nav-actions">

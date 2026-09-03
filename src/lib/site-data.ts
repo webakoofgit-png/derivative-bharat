@@ -10,7 +10,7 @@ export const site = {
   legalName: "Derivative Bharat Heritage Journeys",
   url: "https://derivativebharat.com",
   description:
-    "Cinematic heritage expeditions across India, led by historians, conservationists, and local storytellers.",
+    "Premium small-group heritage expeditions and private culture walks across India, led by historians, conservationists, and local storytellers.",
   email: "hello@derivativebharat.com",
   phone: "+91 98765 43210",
   address: "Pune, Maharashtra, India",

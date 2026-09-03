@@ -81,7 +81,13 @@ export function AboutPage() {
         <div className="container storyteller-rail">
           {storytellers.map((storyteller) => (
             <article key={storyteller.name}>
-              <img src={storyteller.image} alt="" loading="lazy" />
+              <span className="storyteller-avatar" aria-hidden="true">
+                {storyteller.name
+                  .split(" ")
+                  .map((part) => part[0])
+                  .join("")
+                  .slice(0, 2)}
+              </span>
               <h3>{storyteller.name}</h3>
               <p>{storyteller.role}</p>
               <small>{storyteller.bio}</small>
