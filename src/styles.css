@@ -1,6 +1,7 @@
 :root {
   color-scheme: dark;
   --nav-height: 85px;
+  --hero-video-crop-top: clamp(72px, 7vw, 118px);
   --charcoal: oklch(18% 0.018 50);
   --charcoal-2: oklch(23% 0.025 52);
   --sand: oklch(80% 0.055 81);
@@ -665,6 +666,12 @@ ul {
 
 .hero-media video {
   display: block;
+}
+
+.home-hero .hero-media video {
+  top: calc(var(--hero-video-crop-top) * -1);
+  height: calc(100% + var(--hero-video-crop-top));
+  object-position: center top;
 }
 
 .hero-scrim {
