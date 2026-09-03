@@ -2180,7 +2180,7 @@ section.intro-section + section.featured-section {
 
 .footer-wordmark {
   margin-top: 72px;
-  color: oklch(95% 0.025 86 / 0.12);
+  color: oklch(95% 0.025 86 / 0.2);
 }
 
 .footer-wordmark-text {
@@ -2195,11 +2195,6 @@ section.intro-section + section.featured-section {
   letter-spacing: 0;
   text-align: left !important;
   white-space: nowrap;
-}
-
-.footer-wordmark-text .split-char {
-  display: inline-block;
-  transform-origin: 50% 100%;
 }
 
 .footer-bottom {
