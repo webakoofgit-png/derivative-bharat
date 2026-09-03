@@ -3,6 +3,7 @@ import { FormEvent, useEffect, useMemo, useState } from "react";
 import { Link, useLocation, useNavigate } from "../lib/navigation";
 import { Menu, Search, X } from "lucide-react";
 import { destinations, expeditions, journalArticles } from "../lib/site-data";
+import derivativeBharatLogo from "../assets/derivative-bharat-logo.jpg";
 import GooeyNav from "./GooeyNav";
 
 const navItems = [
@@ -88,7 +89,7 @@ export function Nav() {
     <>
       <header className={`site-nav ${isHeroRoute && !isScrolled ? "is-over-hero" : "is-solid"}`}>
         <Link className="brand-mark" to="/" data-cursor="EXPLORE">
-          <span className="brand-mark__seal">DB</span>
+          <img className="brand-mark__logo" src={derivativeBharatLogo} alt="" />
           <span>
             <strong>Derivative Bharat</strong>
             <small>Heritage Storytelling Journeys</small>

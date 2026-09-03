@@ -25,6 +25,7 @@
 
 .gooey-nav-container nav li {
   position: relative;
+  isolation: isolate;
   border-radius: 100vw;
   color: oklch(94% 0.02 86 / 0.78);
   cursor: pointer;
@@ -32,6 +33,8 @@
 }
 
 .gooey-nav-container nav li a {
+  position: relative;
+  z-index: 1;
   display: inline-block;
   padding: 0.55em 0.8em;
   color: inherit;
@@ -47,7 +50,7 @@
 
 .gooey-nav-container nav li::after {
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   inset: 0;
   border-radius: 100vw;
   background: var(--ivory);
@@ -82,6 +85,11 @@
 
 .gooey-nav-container .effect.text {
   color: var(--ivory);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-shadow: none;
+  text-transform: uppercase;
+  white-space: nowrap;
   transition: color 0.3s ease;
 }
 

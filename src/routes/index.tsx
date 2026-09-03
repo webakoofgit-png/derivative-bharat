@@ -25,7 +25,7 @@ import {
   storyCategories,
   travellerQuotes,
 } from "../lib/site-data";
-import heritageBackgroundVideo from "../assets/heritage-background.mp4";
+import homeHeroVideo from "../../From Klickpin.com- Use these 20 Dreamy side hustle ideas that instantly upgrade your space style or celebration without much effort for beginners.mp4";
 import toursTravelsPoster from "../assets/tours-travels-poster.png";
 
 const homeDescription =
@@ -116,7 +116,7 @@ export function HomePage() {
             onCanPlay={() => setHeroVideoReady(true)}
             aria-label="Cinematic heritage travel background"
           >
-            <source src={heritageBackgroundVideo} type="video/mp4" />
+            <source src={homeHeroVideo} type="video/mp4" />
           </video>
         </div>
         <div className="hero-scrim" />

@@ -105,15 +105,21 @@ export default function GooeyNav({
 
     const containerRect = containerRef.current.getBoundingClientRect();
     const position = element.getBoundingClientRect();
-    const styles = {
+    const filterBleed = 6;
+    const textStyles = {
       left: `${position.x - containerRect.x}px`,
       top: `${position.y - containerRect.y}px`,
       width: `${position.width}px`,
       height: `${position.height}px`,
     };
+    const filterStyles = {
+      ...textStyles,
+      left: `${position.x - containerRect.x - filterBleed}px`,
+      width: `${position.width + filterBleed * 2}px`,
+    };
 
-    Object.assign(filterRef.current.style, styles);
-    Object.assign(textRef.current.style, styles);
+    Object.assign(filterRef.current.style, filterStyles);
+    Object.assign(textRef.current.style, textStyles);
     textRef.current.innerText = element.innerText;
   };
 

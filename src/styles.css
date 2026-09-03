@@ -1,5 +1,6 @@
 :root {
   color-scheme: dark;
+  --nav-height: 85px;
   --charcoal: oklch(18% 0.018 50);
   --charcoal-2: oklch(23% 0.025 52);
   --sand: oklch(80% 0.055 81);
@@ -366,7 +367,7 @@ ul {
 }
 
 .site-nav {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   right: 0;
@@ -376,7 +377,9 @@ ul {
   justify-content: space-between;
   gap: 18px;
   padding: 18px clamp(20px, 4vw, 54px);
-  border-bottom: 1px solid transparent;
+  min-height: var(--nav-height);
+  border-bottom: 1px solid oklch(94% 0.02 86 / 0.12);
+  background: var(--ink);
   transition: background 240ms ease, border-color 240ms ease, padding 240ms ease;
 }
 
@@ -393,18 +396,16 @@ ul {
   gap: 12px;
 }
 
-.brand-mark__seal {
-  display: grid;
-  width: 42px;
+.brand-mark__logo {
+  display: block;
+  flex: 0 0 48px;
+  width: 48px;
   aspect-ratio: 1;
-  place-items: center;
   border: 1px solid oklch(94% 0.02 86 / 0.28);
   border-radius: 50%;
   background: oklch(13% 0.014 50 / 0.5);
-  color: var(--gold);
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  line-height: 1;
+  object-fit: cover;
+  box-shadow: 0 0 22px oklch(76% 0.12 83 / 0.18);
 }
 
 .brand-mark strong,
@@ -612,7 +613,13 @@ ul {
 }
 
 .home-hero {
+  min-height: calc(100vh - var(--nav-height));
+  min-height: calc(100dvh - var(--nav-height));
   overflow: hidden;
+}
+
+.home-hero h1 {
+  font-size: clamp(3rem, 8vw, 6.8rem);
 }
 
 .hero-media {
@@ -1997,8 +2004,16 @@ section.intro-section + section.featured-section {
 }
 
 @media (max-width: 1080px) {
+  :root {
+    --nav-height: 85px;
+  }
+
   .site-nav {
     padding-inline: clamp(18px, 3vw, 32px);
+  }
+
+  .brand-mark {
+    min-width: 0;
   }
 
   .site-gooey-nav {
@@ -2074,6 +2089,7 @@ section.intro-section + section.featured-section {
 @media (max-width: 760px) {
   :root {
     --container: min(1180px, calc(100vw - 28px));
+    --nav-height: 61px;
   }
 
   body {
@@ -2123,7 +2139,7 @@ section.intro-section + section.featured-section {
     min-width: 0;
   }
 
-  .brand-mark__seal {
+  .brand-mark__logo {
     flex: 0 0 36px;
     width: 36px;
   }
@@ -2152,8 +2168,17 @@ section.intro-section + section.featured-section {
     padding: 96px 0 72px;
   }
 
+  .home-hero {
+    min-height: calc(100svh - var(--nav-height));
+    min-height: calc(100dvh - var(--nav-height));
+  }
+
   h1 {
     font-size: clamp(3rem, 18vw, 6rem);
+  }
+
+  .home-hero h1 {
+    font-size: clamp(2.2rem, 11vw, 4rem);
   }
 
   h2 {
@@ -2382,6 +2407,7 @@ section.intro-section + section.featured-section {
 @media (max-width: 420px) {
   :root {
     --container: calc(100vw - 24px);
+    --nav-height: 55px;
   }
 
   .site-nav {
@@ -2403,8 +2429,7 @@ section.intro-section + section.featured-section {
     gap: 7px;
   }
 
-  .brand-mark__seal {
-    flex-basis: 34px;
+  .brand-mark__logo {
     width: 34px;
   }
 
